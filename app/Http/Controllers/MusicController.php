@@ -158,7 +158,7 @@ class MusicController extends Controller
         $publications = $medium->publications($user->data->id)->data;
 
         foreach($publications as $publication) {
-            echo 'Publication name: ' . $publication->name;
+            echo 'Publication name: ' . $publication->name . '<br>';
         }
     }
 
