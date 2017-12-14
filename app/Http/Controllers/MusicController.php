@@ -159,6 +159,10 @@ class MusicController extends Controller
         $medium = new Medium($this->credentials);
         $authUrl = $medium->getAuthenticationUrl();
         echo "<a href='$authUrl'>Authenticate with Medium</a>";
+
+        $authorizationCode = $_GET['code'];
+        $medium->authenticate($authorizationCode);
+
         exit();
         dd($authUrl);
 
