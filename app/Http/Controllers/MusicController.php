@@ -157,10 +157,17 @@ class MusicController extends Controller
 //        dd($user);
         $publications = $medium->publications($user->data->id)->data;
 
-        foreach($publications as $publication) {
-            dd($publications, $publication);
-            echo 'Publication name: ' . $publication->name . '<br>';
+
+        foreach($publications as $index => $publication) {
+            $publication->info = [];
+
+            $contributors = $medium->contributors($publication->id)->data;
+
+            foreach($contributors as $contributor) {
+                array_push($publication->info, $contributor);
+            }
         }
+        dd($publications);
     }
 
     public function play(Request $request)
