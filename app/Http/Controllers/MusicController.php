@@ -154,7 +154,12 @@ class MusicController extends Controller
         $medium = new Medium($this->credentials);
         $medium->authenticate($request->code);
         $user = $medium->getAuthenticatedUser();
-        dd($user);
+//        dd($user->id);
+        $publications = $medium->publications($user->data->id)->data;
+
+        foreach($publications as $publication) {
+            echo 'Publication name: ' . $publication->name;
+        }
     }
 
     public function play(Request $request)
