@@ -6,10 +6,15 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "blockcypher/php-client": "*",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "~6.0",
+        "j7mbo/twitter-api-php": "^1.0",
+        "jonathantorres/medium-sdk": "^0.3.0",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "orangehill/iseed": "dev-master",
+        "psychiccat/monero-php": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -22,21 +22,28 @@
 
     <script>
 
+
         var music = [];
         var song = {};
+        var playlist_name = '';
         var playlist = {!! json_encode($tracks->results) !!};
         playlist.forEach(function (currentValue) {
+            playlist_name = currentValue.name;
             currentValue.tracks.forEach(function (currentValue1) {
-                song['author'] = currentValue.artist_name;
-                song['title'] = currentValue1.name;
+                song['album_image'] = currentValue1.album_image;
+                song['author'] = currentValue1.artist_name;
                 song['url'] = currentValue1.audio;
-                song['pic'] = currentValue.image;
+                song['audiodownload'] = currentValue1.audiodownload;
                 song['duration'] = currentValue1.duration;
+                song['pic'] = currentValue1.image;
+                song['title'] = currentValue1.name;
 
                 music.push(song);
                 song = {};
             });
         });
+        console.log(music)
+
 
         var ap = new APlayer({
             element: document.getElementById('аplayer'),                       // Optional, player element
