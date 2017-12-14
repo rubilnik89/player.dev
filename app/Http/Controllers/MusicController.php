@@ -91,7 +91,7 @@ class MusicController extends Controller
     public $credentials = [
         'client-id' => 'ac5b991ce9e5',
         'client-secret' => 'b9057d3f791e418c4f7e7fe3e8e8e692228104e6',
-        'redirect-url' => 'http://dev.craftstone.me/medium',
+        'redirect-url' => 'http://104.198.39.60/medium',
         'state' => 'somesecret',
         'scopes' => 'basicProfile,listPublications',
     ];
