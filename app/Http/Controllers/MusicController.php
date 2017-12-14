@@ -91,7 +91,7 @@ class MusicController extends Controller
     public $credentials = [
         'client-id' => 'ac5b991ce9e5',
         'client-secret' => 'b9057d3f791e418c4f7e7fe3e8e8e692228104e6',
-        'redirect-url' => 'http://104.198.39.60',
+        'redirect-url' => 'http://104.198.39.60/medium',
         'state' => 'somesecret',
         'scopes' => 'basicProfile,listPublications',
     ];
@@ -151,24 +151,17 @@ class MusicController extends Controller
 
     public function medium(Request $request)
     {
-        dd($request->all());
+        $medium = new Medium($this->credentials);
+        $medium->authenticate($request->code);
+        $user = $medium->getAuthenticatedUser();
+        dd($user);
     }
 
     public function play(Request $request)
     {
         $medium = new Medium($this->credentials);
         $authUrl = $medium->getAuthenticationUrl();
-
-        if(isset($request->code)){
-            $authorizationCode = $_GET['code'];
-            $medium->authenticate($authorizationCode);
-            dd($medium);
-
-            $user = $medium->getAuthenticatedUser();
-            dd($user);
-        } else{
-            echo "<a href='$authUrl'>Authenticate with Medium</a>";
-        }
+        echo "<a href='$authUrl'>Authenticate with Medium</a>";
 
         exit();
 
