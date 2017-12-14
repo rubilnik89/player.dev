@@ -167,7 +167,7 @@ class MusicController extends Controller
                 array_push($publication->info, $contributor);
             }
         }
-        dd($publications);
+        dd($publications[0]->info);
     }
 
     public function play(Request $request)
